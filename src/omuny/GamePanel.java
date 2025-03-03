@@ -36,8 +36,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     // Создание нового мяча
     public void newBall() {
-        //random = new Random();
-        ball = new Ball((GAME_WIDTH / 2) - (BALL_DIAMETER / 2), (GAME_HEIGHT / 2) - (BALL_DIAMETER / 2), BALL_DIAMETER, BALL_DIAMETER);
+        random = new Random();
+        ball = new Ball((GAME_WIDTH / 2) - (BALL_DIAMETER / 2), random.nextInt(GAME_HEIGHT - BALL_DIAMETER), BALL_DIAMETER, BALL_DIAMETER);
     }
 
     // Создание нового весла
@@ -59,6 +59,7 @@ public class GamePanel extends JPanel implements Runnable {
         paddle1.draw(g);
         paddle2.draw(g);
         ball.draw(g);
+        score.draw(g);
     }
 
     // Перемещение элементов
@@ -129,13 +130,11 @@ public class GamePanel extends JPanel implements Runnable {
             score.player2++;
             newPaddles();
             newBall();
-            System.out.println("Игрок 2: " + score.player2);
         }
         if (ball.x >= GAME_WIDTH - BALL_DIAMETER) {
             score.player1++;
             newPaddles();
             newBall();
-            System.out.println("Игрок 1: " + score.player1);
         }
     }
 
