@@ -13,7 +13,7 @@ public class GameFrame extends JFrame {
         this.setTitle("Pong Game");
         this.setResizable(false);
         this.setBackground(Color.BLACK);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.pack(); // Изменение размера окна под компоновку объектов
         this.setVisible(true);
         this.setLocationRelativeTo(null);
