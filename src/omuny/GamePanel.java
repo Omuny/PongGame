@@ -123,6 +123,20 @@ public class GamePanel extends JPanel implements Runnable {
         if (paddle2.y >= (GAME_HEIGHT - PADDLE_HEIGHT)) {
             paddle2.y = GAME_HEIGHT - PADDLE_HEIGHT;
         }
+
+        // Добавим игроку очко и создадим новые вёсла и мячь
+        if (ball.x <= 0) {
+            score.player2++;
+            newPaddles();
+            newBall();
+            System.out.println("Игрок 2: " + score.player2);
+        }
+        if (ball.x >= GAME_WIDTH - BALL_DIAMETER) {
+            score.player1++;
+            newPaddles();
+            newBall();
+            System.out.println("Игрок 1: " + score.player1);
+        }
     }
 
     // Запуск
