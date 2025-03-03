@@ -41,7 +41,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     // Создание нового весла
     public void newPaddles() {
-
+        paddle1 = new Paddle(0, (GAME_HEIGHT / 2) - (PADDLE_HEIGHT / 2), PADDLE_WEIGHT, PADDLE_HEIGHT, 1);
+        paddle2 = new Paddle(GAME_WIDTH - PADDLE_WEIGHT, (GAME_HEIGHT / 2) - (PADDLE_HEIGHT / 2), PADDLE_WEIGHT, PADDLE_HEIGHT, 2);
     }
 
     // Отрисовка панели
@@ -54,7 +55,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     // Рисование объектов на экране
     public  void draw(Graphics g) {
-
+        paddle1.draw(g);
+        paddle2.draw(g);
     }
 
     // Перемещение элементов
@@ -83,7 +85,6 @@ public class GamePanel extends JPanel implements Runnable {
                 checkCollision();
                 repaint();
                 delta--;
-                System.out.println("Test");
             }
         }
     }
