@@ -8,29 +8,43 @@ public class Ball extends Rectangle {
     Random random;
     int xVelocity;
     int yVelocity;
+    int initialSpeed = 2;
 
-    Ball() {
+    Ball(int x, int y, int width, int height) {
+        super(x, y, width, height);
+        random = new Random();
+        int randomXDirection = random.nextInt(2); // Направлние X куда в начале полетит мячь
+        if (randomXDirection == 0) {
+            randomXDirection--;
+        }
+        setXDirection((randomXDirection * initialSpeed));
 
+        int randomYDirection = random.nextInt(2); // Направлние Y куда в начале полетит мячь
+        if (randomYDirection == 0) {
+            randomYDirection--;
+        }
+        setYDirection((randomYDirection * initialSpeed));
     }
 
     // Установка направления по X
     public void setXDirection(int randomXDirection) {
-
+        xVelocity = randomXDirection;
     }
 
     // Установка направления по Y
     public void setYDirection(int randomYDirection) {
-
+        yVelocity = randomYDirection;
     }
 
     // Перемещение шара
     public void move() {
-
+        x += xVelocity;
+        y += yVelocity;
     }
 
     // Отрисовка шара
     public void draw(Graphics g) {
-
+        g.setColor(Color.white);
+        g.fillOval(x, y, height, width);
     }
-
 }

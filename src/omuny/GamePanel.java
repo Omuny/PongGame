@@ -36,7 +36,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     // Создание нового мяча
     public void newBall() {
-
+        //random = new Random();
+        ball = new Ball((GAME_WIDTH / 2) - (BALL_DIAMETER / 2), (GAME_HEIGHT / 2) - (BALL_DIAMETER / 2), BALL_DIAMETER, BALL_DIAMETER);
     }
 
     // Создание нового весла
@@ -57,29 +58,70 @@ public class GamePanel extends JPanel implements Runnable {
     public  void draw(Graphics g) {
         paddle1.draw(g);
         paddle2.draw(g);
+        ball.draw(g);
     }
 
     // Перемещение элементов
     public void move() {
         paddle1.move();
         paddle2.move();
-        //ball.move();
+        ball.move();
     }
 
     // Проверка столкновений
     public void checkCollision() {
+        // Отскакивание шара от краев окна
+        if (ball.y <= 0) {
+            ball.setYDirection(-ball.yVelocity);
+        }
+        if (ball.y >= GAME_HEIGHT - BALL_DIAMETER) {
+            ball.setYDirection(-ball.yVelocity);
+        }
+
+        // Отскакивание шара от вёсел
+        if (ball.intersects(paddle1)) { // Проверка коллизии перрвого весла
+            ball.xVelocity = -ball.xVelocity;
+
+            // ОПЦИОНАЛЬНО. Ускорение шара после столкновения с веслом
+            ball.xVelocity++;
+            if (ball.yVelocity > 0) {
+                ball.yVelocity++;
+            } else {
+                ball.yVelocity--;
+            }
+            // ОПЦИОНАЛЬНО. Ускорение шара после столкновения с веслом
+
+            ball.setXDirection(ball.xVelocity);
+            ball.setYDirection(ball.yVelocity);
+        }
+        if (ball.intersects(paddle2)) { // Проверка коллизии второго весла
+            ball.xVelocity = -ball.xVelocity;
+
+            // ОПЦИОНАЛЬНО. Ускорение шара после столкновения с веслом
+            ball.xVelocity++;
+            if (ball.yVelocity > 0) {
+                ball.yVelocity++;
+            } else {
+                ball.yVelocity--;
+            }
+            // ОПЦИОНАЛЬНО. Ускорение шара после столкновения с веслом
+
+            ball.setXDirection(ball.xVelocity);
+            ball.setYDirection(ball.yVelocity);
+        }
+
         // Останавливает весла краями экрана
         if (paddle1.y <= 0) {
             paddle1.y = 0;
         }
-        if (paddle1.y >= (GAME_HEIGHT-PADDLE_HEIGHT)) {
-            paddle1.y = GAME_HEIGHT-PADDLE_HEIGHT;
+        if (paddle1.y >= (GAME_HEIGHT - PADDLE_HEIGHT)) {
+            paddle1.y = GAME_HEIGHT - PADDLE_HEIGHT;
         }
         if (paddle2.y <= 0) {
             paddle2.y = 0;
         }
-        if (paddle2.y >= (GAME_HEIGHT-PADDLE_HEIGHT)) {
-            paddle2.y = GAME_HEIGHT-PADDLE_HEIGHT;
+        if (paddle2.y >= (GAME_HEIGHT - PADDLE_HEIGHT)) {
+            paddle2.y = GAME_HEIGHT - PADDLE_HEIGHT;
         }
     }
 
