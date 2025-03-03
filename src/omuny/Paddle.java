@@ -83,5 +83,4 @@ public class Paddle extends Rectangle {
         }
         g.fillRect(x, y, width, height);
     }
-
 }
