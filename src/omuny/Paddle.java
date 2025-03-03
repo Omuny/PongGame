@@ -5,7 +5,10 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 
-public class Paddle {
+public class Paddle extends Rectangle {
+
+    int id;
+    int yVelocity;
 
     Paddle() {
 
@@ -26,12 +29,12 @@ public class Paddle {
 
     }
 
-    // Передвижение
+    // Передвижение весла
     public void move() {
 
     }
 
-    // Отрисовка
+    // Отрисовка весла
     public void draw(Graphics g) {
 
     }

@@ -1,8 +1,13 @@
 package omuny;
 
 import java.awt.*;
+import java.util.Random;
 
-public class Ball {
+public class Ball extends Rectangle {
+
+    Random random;
+    int xVelocity;
+    int yVelocity;
 
     Ball() {
 
@@ -18,10 +23,12 @@ public class Ball {
 
     }
 
+    // Перемещение шара
     public void move() {
 
     }
 
+    // Отрисовка шара
     public void draw(Graphics g) {
 
     }
