@@ -7,12 +7,13 @@ import javax.swing.*;
 
 public class GamePanel extends JPanel implements Runnable {
 
-    static final int GAME_WIDTH = 1000;
-    static final int GAME_HEIGHT = (int)(GAME_WIDTH * (0.5555));
-    static  final Dimension SCREEN_SIZE = new Dimension(GAME_WIDTH, GAME_HEIGHT);
-    static final int BALL_DIAMETER = 20;
-    static final int PADDLE_WEIGHT = 25;
-    static final int PADDLE_HEIGHT = 100;
+    static final int GAME_WIDTH = 1000; // Ширина поля игры
+    static final int GAME_HEIGHT = (int)(GAME_WIDTH * (0.5555)); // Высота поля игры
+    static final Dimension SCREEN_SIZE = new Dimension(GAME_WIDTH, GAME_HEIGHT);
+    static final int BALL_DIAMETER = 20; // Диаметр шара
+    static final int PADDLE_WEIGHT = 25; // Ширина весла
+    static final int PADDLE_HEIGHT = 100; // Высота весла
+
     Thread gameThread;
     Image image;
     Graphics graphics;
@@ -47,6 +48,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     // Отрисовка панели
+    @Override
     public void paint(Graphics g) {
         image = createImage(getWidth(), getHeight());
         graphics = image.getGraphics();
@@ -111,7 +113,7 @@ public class GamePanel extends JPanel implements Runnable {
             ball.setYDirection(ball.yVelocity);
         }
 
-        // Останавливает весла краями экрана
+        // Останавка весла краями экрана
         if (paddle1.y <= 0) {
             paddle1.y = 0;
         }
@@ -125,7 +127,7 @@ public class GamePanel extends JPanel implements Runnable {
             paddle2.y = GAME_HEIGHT - PADDLE_HEIGHT;
         }
 
-        // Добавим игроку очко и создадим новые вёсла и мячь
+        // Если шар забили - добавим игроку очко и создадим новые вёсла и шар
         if (ball.x <= 0) {
             score.player2++;
             newPaddles();
@@ -140,7 +142,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     // Запуск
     public void run() {
-        // Игровой цикл
+        // Игровой цикл (Реализован по прототипу из Minecraft)
         long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
         double ns = 1_000_000_000 / amountOfTicks;
@@ -160,13 +162,15 @@ public class GamePanel extends JPanel implements Runnable {
 
     // Класс для прослушивания действий
     public class AL extends KeyAdapter { // Action Listener
-        // Ожидание нажатия клавиш
+        // Нажатие клавиши
+        @Override
         public void keyPressed(KeyEvent e) {
             paddle1.keyPressed(e);
             paddle2.keyPressed(e);
         }
 
-        // Реализация нажатия клавиш
+        // Отпускание клавиши
+        @Override
         public void keyReleased(KeyEvent e) {
             paddle1.keyReleased(e);
             paddle2.keyReleased(e);

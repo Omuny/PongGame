@@ -6,32 +6,34 @@ import java.util.Random;
 public class Ball extends Rectangle {
 
     Random random;
-    int xVelocity;
-    int yVelocity;
-    int initialSpeed = 2;
+    int xVelocity; // Скорость по X
+    int yVelocity; // Скорость по Y
+    int initialSpeed = 2; // Начальное ускорение мяча
 
     Ball(int x, int y, int width, int height) {
         super(x, y, width, height);
         random = new Random();
-        int randomXDirection = random.nextInt(2); // Направлние X куда в начале полетит мячь
+        // Направление X куда в начале полетит мячь
+        int randomXDirection = random.nextInt(2);
         if (randomXDirection == 0) {
             randomXDirection--;
         }
         setXDirection((randomXDirection * initialSpeed));
 
-        int randomYDirection = random.nextInt(2); // Направлние Y куда в начале полетит мячь
+        // Направление Y куда в начале полетит мячь
+        int randomYDirection = random.nextInt(2);
         if (randomYDirection == 0) {
             randomYDirection--;
         }
         setYDirection((randomYDirection * initialSpeed));
     }
 
-    // Установка направления по X
+    // Установка скорости по X
     public void setXDirection(int randomXDirection) {
         xVelocity = randomXDirection;
     }
 
-    // Установка направления по Y
+    // Установка скорости по Y
     public void setYDirection(int randomYDirection) {
         yVelocity = randomYDirection;
     }
@@ -45,6 +47,6 @@ public class Ball extends Rectangle {
     // Отрисовка шара
     public void draw(Graphics g) {
         g.setColor(Color.white);
-        g.fillOval(x, y, height, width);
+        g.fillOval(x, y, width, height);
     }
 }

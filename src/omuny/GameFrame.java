@@ -11,11 +11,11 @@ public class GameFrame extends JFrame {
         panel = new GamePanel();
         this.add(panel);
         this.setTitle("Pong Game");
-        this.setResizable(false);
+        this.setResizable(false); // Отключение ручного изменения размера окна
         this.setBackground(Color.BLACK);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.pack(); // Изменение размера окна под компоновку объектов
         this.setVisible(true);
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null); // Окно посередине экрана
     }
 }

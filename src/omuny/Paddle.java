@@ -2,13 +2,11 @@ package omuny;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.*;
-import javax.swing.*;
 
 public class Paddle extends Rectangle {
 
     int id; // id весла: 1 - первый игрок, 2 - второй игрок
-    int yVelocity;
+    int yVelocity; // Установка скорости
     int speed = 10; // Скорость весел
 
     Paddle(int x, int y, int PADDLE_WIDTH, int PADDLE_HEIGHT, int id) {
@@ -19,23 +17,27 @@ public class Paddle extends Rectangle {
     // Нажатие клавиши
     public void keyPressed(KeyEvent e) {
         switch (id) {
-            case 1:
+            case 1: // 1 весло
                 if (e.getKeyCode() == KeyEvent.VK_W) {
                     setYDirection(-speed);
                     move();
-                } else if (e.getKeyCode() == KeyEvent.VK_S) {
+                }
+                if (e.getKeyCode() == KeyEvent.VK_S) {
                     setYDirection(speed);
                     move();
                 }
                 break;
-            case 2:
+            case 2: // 2 весло
                 if (e.getKeyCode() == KeyEvent.VK_UP) {
                     setYDirection(-speed);
                     move();
-                } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+                }
+                if (e.getKeyCode() == KeyEvent.VK_DOWN) {
                     setYDirection(speed);
                     move();
                 }
+                break;
+            default:
                 break;
         }
     }
@@ -43,28 +45,32 @@ public class Paddle extends Rectangle {
     // Реализация клавиш
     public void keyReleased(KeyEvent e) {
         switch (id) {
-            case 1:
+            case 1: // 1 весло
                 if (e.getKeyCode() == KeyEvent.VK_W) {
                     setYDirection(0);
                     move();
-                } else if (e.getKeyCode() == KeyEvent.VK_S) {
+                }
+                if (e.getKeyCode() == KeyEvent.VK_S) {
                     setYDirection(0);
                     move();
                 }
                 break;
-            case 2:
+            case 2: // 2 весло
                 if (e.getKeyCode() == KeyEvent.VK_UP) {
                     setYDirection(0);
                     move();
-                } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+                }
+                if (e.getKeyCode() == KeyEvent.VK_DOWN) {
                     setYDirection(0);
                     move();
                 }
+                break;
+            default:
                 break;
         }
     }
 
-    // Установка вертикального положения весла
+    // Установка скорости весла
     public void setYDirection(int yDirection) {
         yVelocity = yDirection;
     }
