@@ -85,14 +85,14 @@ public class GamePanel extends JPanel implements Runnable {
         if (ball.intersects(paddle1)) { // Проверка коллизии перрвого весла
             ball.xVelocity = -ball.xVelocity;
 
-            // ОПЦИОНАЛЬНО. Ускорение шара после столкновения с веслом
+            // ОПЦИОНАЛЬНО ↓. Ускорение шара после столкновения с веслом
             ball.xVelocity++;
             if (ball.yVelocity > 0) {
                 ball.yVelocity++;
             } else {
                 ball.yVelocity--;
             }
-            // ОПЦИОНАЛЬНО. Ускорение шара после столкновения с веслом
+            // ОПЦИОНАЛЬНО ↑. Ускорение шара после столкновения с веслом
 
             ball.setXDirection(ball.xVelocity);
             ball.setYDirection(ball.yVelocity);
@@ -100,14 +100,14 @@ public class GamePanel extends JPanel implements Runnable {
         if (ball.intersects(paddle2)) { // Проверка коллизии второго весла
             ball.xVelocity = -ball.xVelocity;
 
-            // ОПЦИОНАЛЬНО. Ускорение шара после столкновения с веслом
+            // ОПЦИОНАЛЬНО ↓. Ускорение шара после столкновения с веслом
             ball.xVelocity++;
             if (ball.yVelocity > 0) {
                 ball.yVelocity++;
             } else {
                 ball.yVelocity--;
             }
-            // ОПЦИОНАЛЬНО. Ускорение шара после столкновения с веслом
+            // ОПЦИОНАЛЬНО ↑. Ускорение шара после столкновения с веслом
 
             ball.setXDirection(ball.xVelocity);
             ball.setYDirection(ball.yVelocity);
