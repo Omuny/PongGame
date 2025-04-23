@@ -25,7 +25,7 @@ Java-реализация классической игры Pong с двухпо
 ```bash
 git clone https://github.com/Omuny/PongGame.git
 ```
-2. Клонируйте репозиторий:
+2. Скомпилируйте проект:
 ```bash
 javac -d out src/omuny/*.java
 ```
